@@ -16,4 +16,7 @@
     <string name="dropdown_arrow">DropDown Arrow</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="delete_task_swipe">Delete Task</string>
+    <string name="rotation">rotation</string>
+    <string name="image_logo">Image logo</string>
 </resources>

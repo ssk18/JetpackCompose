@@ -37,3 +37,7 @@ val Colors.taskItemBackgroundColor: Color
 val Colors.taskItemTitleColor: Color
     @Composable
     get() = if (isLight) Color.DarkGray else Color.LightGray
+
+val Colors.splashScreenBackground: Color
+    @Composable
+    get() = if (isLight) Purple700 else Color.Black

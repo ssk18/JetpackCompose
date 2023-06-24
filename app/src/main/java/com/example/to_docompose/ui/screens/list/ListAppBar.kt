@@ -59,7 +59,9 @@ fun ListAppBar(
                     sharedViewModel.searchAppbarState.value =
                         SearchAppBarState.Open
                 },
-                onSortClicked = {},
+                onSortClicked = {
+                    sharedViewModel.persistSortingState(it)
+                },
                 onDeleteClicked = {}
             )
         }
@@ -73,7 +75,9 @@ fun ListAppBar(
                 onCloseClicked = {
                     sharedViewModel.searchAppbarState.value = SearchAppBarState.Closed
                 },
-                onSearchClicked = {})
+                onSearchClicked = {
+                    sharedViewModel.searchDatabase(it)
+                })
         }
     }
 }
@@ -154,18 +158,18 @@ fun SortAction(
             DropdownMenuItem(
                 onClick = {
                     expanded = false
-                    onSortClicked(Priority.MEDIUM)
-                }
-            ) {
-                PriorityItem(priority = Priority.MEDIUM)
-            }
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
                     onSortClicked(Priority.HIGH)
                 }
             ) {
                 PriorityItem(priority = Priority.HIGH)
+            }
+            DropdownMenuItem(
+                onClick = {
+                    expanded = false
+                    onSortClicked(Priority.NONE)
+                }
+            ) {
+                PriorityItem(priority = Priority.NONE)
             }
         }
     }
@@ -265,6 +269,7 @@ fun SearchAppBar(
                                 onTextChange("")
                                 trailingIconState = TrailingIconState.READY_TO_CLOSE
                             }
+
                             TrailingIconState.READY_TO_CLOSE -> {
                                 if (text.isNotEmpty()) {
                                     onTextChange("")

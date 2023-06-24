@@ -38,5 +38,5 @@ fun PriorityItem(priority: Priority) {
 @Preview(showBackground = true)
 @Composable
 fun PriorityItemPreview(){
-    PriorityItem(priority = Priority.HIGH)
+    PriorityItem(priority = Priority.NONE)
 }
